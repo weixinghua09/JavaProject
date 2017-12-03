@@ -34,4 +34,8 @@ public class AddressServiceImpl {
 		this.AddressDaoImpl.updateAddress(address);
 		
 	}
+
+	public void deleteById(int id) {
+		this.AddressDaoImpl.deleteById(id);
+	}
 }

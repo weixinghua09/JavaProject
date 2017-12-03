@@ -69,4 +69,11 @@ public class AddressDaoImpl {
 		
 	}
 
+	public void deleteById(int id) {
+		String sql = "delete from address where id=?";
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setParameter(0, id);
+        query.executeUpdate();
+	}
+
 }

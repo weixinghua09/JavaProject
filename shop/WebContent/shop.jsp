@@ -119,16 +119,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-            <form action="product/type" method="get"></form>
-           		 产品类型：     <select name="pt">
+            <form action="<%=basePath%>product/type" method="get">
+            	 产品类型：     <select name="typeid">
            		 <c:forEach items="${pts }" var="pt">
 					<option value="${pt.id }">${pt.name }</option>
 				</c:forEach>
-				</select><br> 
-						<c:forEach items="${pts }" var="pt">
-							<option value="${pt.id }">${pt.name }</option>
-						</c:forEach>
-					</select>
+				</select>
+				<input class="add_to_cart_button" type="submit" value="搜索"/>
+            </form>
+            <br/>           		
             	<c:forEach items="${productlist }" var="p">
             		<div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">

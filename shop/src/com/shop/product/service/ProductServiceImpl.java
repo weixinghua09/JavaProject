@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.shop.entity.Product;
+import com.shop.entity.ProductType;
 import com.shop.product.dao.ProductDaoImpl;
 
 @Service
@@ -25,5 +26,17 @@ public class ProductServiceImpl {
 	public Product findById(int id) {
 		Product p = this.ProductDaoIpml.findById(id);
 		return p;
+	}
+
+	public List<ProductType> findAllType() {
+		List<ProductType> pts = new ArrayList<ProductType>();
+		pts=this.ProductDaoIpml.findAllType();
+		return pts;
+	}
+
+	public List<Product> findByType(int typeid) {
+		List<Product> productlist = new ArrayList<Product>();
+		productlist=this.ProductDaoIpml.findByType(typeid);
+		return productlist;
 	}
 }

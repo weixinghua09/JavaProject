@@ -21,6 +21,17 @@ public class AddressController {
 	@Resource
 	private AddressServiceImpl AddressServiceImpl;
 	
+	@RequestMapping(value="/deleteaddress",method=RequestMethod.GET)
+	public String deleteAddress(@RequestParam("id") int id,Model model,HttpSession session){
+		this.AddressServiceImpl.deleteById(id);
+		User user = (User)session.getAttribute("user");
+		String userName = user.getUserName();
+		List<Address> addresslist = this.AddressServiceImpl.findByUserName(userName);
+		session.setAttribute("addresslist", addresslist);
+		session.setAttribute("user", user);
+		return "myaddress";
+	}
+	
 	@RequestMapping(value="/updateaddress",method=RequestMethod.POST)
 	public String updateaddress(@RequestParam("name") String name,
 			@RequestParam("country") String country,@RequestParam("province") String province,
