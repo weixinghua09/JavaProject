@@ -1,5 +1,8 @@
 package com.shop.user.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shop.entity.Admin;
 import com.shop.entity.User;
 import com.shop.user.service.UserServiceImpl;
 
@@ -19,6 +23,18 @@ public class UserController {
 	
 	@Resource
 	private UserServiceImpl UserServiceImpl;
+	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String deleteuser(Integer id,Model model, HttpSession session){
+		Admin admin=(Admin)session.getAttribute("admin");
+		this.UserServiceImpl.deleteById(id);
+		List<User> userlist = new ArrayList<User>();
+		userlist = this.UserServiceImpl.findAll();
+		session.setAttribute("userlist", userlist);
+		session.setAttribute("admin", admin);
+		return "adminuser";
+		
+	}
 	
 	@RequestMapping(value="/address",method=RequestMethod.GET)
 	public String address(String userName,Model model,HttpSession session){

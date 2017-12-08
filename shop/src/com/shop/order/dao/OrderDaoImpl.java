@@ -3,6 +3,7 @@ package com.shop.order.dao;
 import javax.annotation.Resource;
 
 import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
@@ -15,15 +16,7 @@ public class OrderDaoImpl {
 	private SessionFactory sessionFactory;
 	
 	public void addOrder(Order o) {
-		String sql = "insert into order(id,totalPrice,userid)values(?,?,?)";
-		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
-        if(o!=null){
-				query.setParameter(0, o.getId());
-				query.setParameter(1, o.getTotalPrice());
-//				query.setParameter(2, o.getUser().getId());
-				
-		}
-        query.executeUpdate();		
+		sessionFactory.getCurrentSession().save(o);
 	}
 
 }

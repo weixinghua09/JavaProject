@@ -1,6 +1,7 @@
 package com.shop.user.dao;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -10,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.shop.entity.Product;
 import com.shop.entity.User;
 
 
@@ -50,5 +52,17 @@ public class UserDaoImpl{
 		}
         query.executeUpdate();
 		
+	}
+
+	public List<User> findAll() {
+		Query query=this.sessionFactory.getCurrentSession().createQuery("from "+User.class.getSimpleName());
+		return query.list();
+	}
+
+	public void deleteById(Integer id) {
+		String sql = "delete from user where id=?";
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setParameter(0, id);
+        query.executeUpdate();
 	}
 }

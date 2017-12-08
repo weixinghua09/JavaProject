@@ -227,7 +227,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <h2 class="section-title">订单详情</h2>
                         <div id="myform">
                             <form action="loginServlet">
-                                <SPAN>姓名：</SPAN><input name="username" type="text"></input>
+                                <SPAN>姓名：${user.userName }</SPAN>
                             </form>
                         </div>
                     </div>

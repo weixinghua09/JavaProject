@@ -39,4 +39,25 @@ public class ProductServiceImpl {
 		productlist=this.ProductDaoIpml.findByType(typeid);
 		return productlist;
 	}
+
+	public void deleteById(Integer id) {
+		this.ProductDaoIpml.deleteById(id);
+		
+	}
+
+	public void updateById(Product p, Integer id) {
+		this.ProductDaoIpml.updateById(p,id);
+		
+	}
+
+	public void addProduct(Product p) {
+		this.ProductDaoIpml.addProduct(p);
+		
+	}
+
+	public List<Product> findByName(String name) {
+		List<Product> productlist = new ArrayList<Product>();
+		productlist=this.ProductDaoIpml.findByName(name);
+		return productlist;
+	}
 }

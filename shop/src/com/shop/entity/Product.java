@@ -14,6 +14,7 @@ public class Product {
 	private int discount;
 	private String description;
 	private Integer typeId;
+	private String img;
 	public int getId() {
 		return id;
 	}
@@ -56,6 +57,5 @@ public class Product {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	private String img;
 	
 }

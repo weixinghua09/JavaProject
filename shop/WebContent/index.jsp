@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a href="checkout.html"><i class="fa fa-user"></i> 收货地址</a></li>
                             <li><a href="regist.jsp"><i class="fa fa-user"></i> 注册</a></li>
                             <li><a href="login.jsp"><i class="fa fa-user"></i> 登录</a></li>
-                            <li><a href="admin.html"><i class="fa fa-user"></i> 后台管理</a></li>
+                            <li><a href="adminlogin.jsp"><i class="fa fa-user"></i> 后台管理</a></li>
                         </ul>
                     </div>
                 </div>

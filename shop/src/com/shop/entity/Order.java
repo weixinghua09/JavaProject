@@ -6,8 +6,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="ORDER")
+@Table(name="ORDERS")
 public class Order {
 	
 	private int id;
@@ -15,6 +17,7 @@ public class Order {
 	private User user;
 	
 	@Id
+	@GenericGenerator(name="native", strategy = "native")
 	public int getId() {
 		return id;
 	}

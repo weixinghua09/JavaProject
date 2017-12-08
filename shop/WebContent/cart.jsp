@@ -154,7 +154,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="get" action="<%=basePath%>order/generateOrder">
+                            <form method="POST" action="<%=basePath%>order/generateOrder">
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
@@ -182,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </td>
 
                                             <td class="product-price">
-                                                <span class="amount">${i.product.price }</span> 
+                                                <span class="amount">${i.product.discount }</span> 
                                             </td>
 
                                             <td class="product-quantity">

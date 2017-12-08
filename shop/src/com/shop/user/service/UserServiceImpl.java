@@ -1,11 +1,14 @@
 package com.shop.user.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.shop.user.dao.UserDaoImpl;
 import com.shop.entity.User;
+import com.shop.user.dao.UserDaoImpl;
 
 @Service
 public class UserServiceImpl {
@@ -52,5 +55,15 @@ public class UserServiceImpl {
 	public void updateInfo(String userName, int age, String phone) {
 		this.UserDaoImpl.updateInfo(userName,age,phone);
 		
+	}
+
+	public List<User> findAll() {
+		List<User> userlist = new ArrayList<User>();
+		userlist = this.UserDaoImpl.findAll();
+		return userlist;
+	}
+
+	public void deleteById(Integer id) {
+		this.UserDaoImpl.deleteById(id);
 	}
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shop.entity.Product;
+import com.shop.entity.User;
 import com.shop.product.service.Cart;
 import com.shop.product.service.CartItem;
 import com.shop.product.service.ProductServiceImpl;
@@ -27,6 +28,7 @@ public class CartController {
 
 	@RequestMapping(value="/showCart", method=RequestMethod.GET)
 	public String showCart(Model model, HttpSession session){
+		User user = (User)session.getAttribute("user");
 		List<CartItem> itemlist = new ArrayList<CartItem>();
 		
 		Cart c = (Cart) session.getAttribute("cart");
@@ -37,12 +39,14 @@ public class CartController {
 			itemlist.add(ci);
 		}
 		session.setAttribute("itemlist",itemlist);
+		session.setAttribute("user", user);
 		return "cart";
 	}
 	
 	@RequestMapping(value="/addCartiem", method=RequestMethod.GET)
 	public String addCartItem(@RequestParam("id") int id,Model model, HttpSession session){
 		Product p = this.ProductServiceImpl.findById(id);
+		User user = (User)session.getAttribute("user");
 		if(p!=null){
 			Cart c = (Cart) session.getAttribute("cart");
 			if (c == null) {
@@ -50,6 +54,7 @@ public class CartController {
 			}
 			c.addCart(p);
 			session.setAttribute("cart", c);
+			session.setAttribute("user", user);
 			return "shop";
 		}else{
 			return "没有库存";

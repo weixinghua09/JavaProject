@@ -1,15 +1,22 @@
 package com.shop.entity;
 
-public class admin {
-	private int adminId;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ADMIN")
+public class Admin {
+	@Id
+	private int id;
 	private String adminName;
 	private String aPassword;
 	
-	public int getAdminId() {
-		return adminId;
+	public int getId() {
+		return id;
 	}
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getAdminName() {
 		return adminName;
