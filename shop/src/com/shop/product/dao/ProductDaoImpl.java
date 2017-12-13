@@ -10,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.shop.entity.Order;
+import com.shop.entity.OrderItem;
 import com.shop.entity.Product;
 import com.shop.entity.ProductType;
 
@@ -52,18 +54,7 @@ public class ProductDaoImpl {
 	}
 
 	public void updateById(Product p, Integer id) {
-		String sql = "update product set name=?,price=?,discount=?,description=?,typeid=? where id=?";
-		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
-		query.setParameter(5, p.getId());
-        if(p!=null){
-				query.setParameter(0, p.getName());
-				query.setParameter(1, p.getPrice());
-				query.setParameter(2, p.getDiscount());
-				query.setParameter(3, p.getDescription());
-				query.setParameter(4, p.getTypeId());
-		}
-        int i = query.executeUpdate();
-		System.out.println(i);
+		this.sessionFactory.getCurrentSession().update(p);
 	}
 
 	public void addProduct(Product p) {
@@ -84,6 +75,32 @@ public class ProductDaoImpl {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Product where name like ?");
 		query.setParameter(0,"%"+name+"%");
+		return query.list();
+	}
+
+	public void deleteType(int id) {
+		String sql = "delete from producttype where id=?";
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.setParameter(0, id);
+        query.executeUpdate();	
+		
+	}
+
+	public void addProductType(ProductType pt) {
+		sessionFactory.getCurrentSession().save(pt);
+		
+	}
+
+	public List<OrderItem> findByOrderId(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from OrderItem where orderId=?");
+		query.setParameter(0,id);
+		return query.list();
+	}
+
+	public List<Product> findByDate() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Product order by date");
 		return query.list();
 	}
 }

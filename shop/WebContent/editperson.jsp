@@ -99,15 +99,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="col-md-12">
                     <div class="latest-product">
-                        <h2 class="section-title">个人中心</h2>
+                        <h2 class="section-title">完善信息</h2>
                         <div id="myform">
                         	<span>欢迎您，</span><span>${user.userName }</span>
-                                <span><!--头像显示--></span>
-                                <SPAN>年龄：</SPAN><span>${user.age }</span>
-                                <SPAN>联系方式：</SPAN><span>${user.phone }</span>
-                            </div>
+                            <form action="<%=basePath%>user/update" method="post">
+                                <SPAN>年龄：</SPAN><input name="age" type="text"/>
+                                <SPAN>联系方式：</SPAN><input name="phone" type="text"/>
+                                <input type="submit" value="提交" />
+                            </form>
+                        </div>
                         <div id="myform">
-                            <a href="<%=basePath%>user/modify">完善资料</a>
                         	<a href="<%=basePath%>user/address">管理地址</a>
                         </div>
                     </div>

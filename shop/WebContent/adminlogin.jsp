@@ -27,6 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="<%=basePath%>/css/owl.carousel.css">
     <link rel="stylesheet" href="<%=basePath%>/style.css">
     <link rel="stylesheet" href="<%=basePath%>/css/responsive.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body>
    
@@ -84,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li><a href="index.html">首页</a></li>
                         <li><a href="shop.html">商店</a></li>
                         <li><a href="single-product.html">单品</a></li>
-                        <li class="active"><a href="person.jsp">个人中心</a></li>
+                        <li class="active"><a href="login.html">登录</a></li>
                         <li><a href="checkout.html">收货地址</a></li>
                         <li><a href="#">类别</a></li>
                         <li><a href="#">其他</a></li>
@@ -92,23 +99,138 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>  
             </div>
         </div>
-    </div> <!-- End mainmenu area -->    
+    </div> <!-- End mainmenu area -->
+    
+    <div class="slider-area">
+        <div class="zigzag-bottom"></div>
+        <div id="slide-list" class="carousel carousel-fade slide" data-ride="carousel">
+            
+            <div class="slide-bulletz">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ol class="carousel-indicators slide-indicators">
+                                <li data-target="#slide-list" data-slide-to="0" class="active"></li>
+                                <li data-target="#slide-list" data-slide-to="1"></li>
+                                <li data-target="#slide-list" data-slide-to="2"></li>
+                            </ol>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-one"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                <h2>We are awesome</h2>
+                                                <p>I could not help to cut these words together, and to regroup with photographs, immediately, a beautiful photographic prose shines in front of my eyes! I read it silently, and at that moment, my heart and vision were deeply intoxicated with enjoyment...</p>
+                                                <p>I could not help to cut these words together, and to regroup with photographs, immediately, a beautiful photographic prose shines in front of my eyes! I read it silently, and at that moment, my heart and vision were deeply intoxicated with enjoyment...</p>
+                                                <a href="" class="readmore">Learn more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-two"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                <h2>We are great</h2>
+                                                <p>If you can use your camera to find the universal meaning, then you're a photographer. No matter what type of camera you're using, whether you're shooting for art or enjoyment. As long as your heart is searching, you're a photographer. That's what photography means!</p>
+                                                <a href="" class="readmore">Learn more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide">
+                        <div class="slide-bg slide-three"></div>
+                        <div class="slide-text-wrapper">
+                            <div class="slide-text">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6 col-md-offset-6">
+                                            <div class="slide-content">
+                                                <h2>We are superb</h2>
+                                                <p>The story behind the photograph, the thinking after the moment. It's the photographer's greatness, and it's the photographer's responsibility. ?</p>
+                                                <p> To find the photo in the universal significance, while the ordinary real meaning is to impress people that a sincere, that a good sigh; that a heartache, the hidden side of a resonance; that a sorrowful anger, a wordless moved.</p>
+                                                <a href="" class="readmore">Learn more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>        
+    </div> <!-- End slider area -->
+    <div class="promo-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-refresh"></i>
+                        <p>30天退换</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-truck"></i>
+                        <p>免费送达</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-lock"></i>
+                        <p>安全支付</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-promo">
+                        <i class="fa fa-gift"></i>
+                        <p>最新单品</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End promo area -->
+    
     <div class="maincontent-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="latest-product">
-                        <h2 class="section-title">个人中心</h2>
+                        <h2 class="section-title">请登录</h2>
                         <div id="myform">
-                        	<span>欢迎您，</span><span>${user.userName }</span>
-                                <span><!--头像显示--></span>
-                                <SPAN>年龄：</SPAN><span>${user.age }</span>
-                                <SPAN>联系方式：</SPAN><span>${user.phone }</span>
-                            </div>
-                        <div id="myform">
-                            <a href="<%=basePath%>user/modify">完善资料</a>
-                        	<a href="<%=basePath%>user/address">管理地址</a>
+                            <form action="<%=basePath%>admin/login" method="post">
+                                <SPAN>姓名：</SPAN><input name="adminName" type="text"/>
+                                <SPAN>密码：</SPAN><input name="aPassword" type="password"/>
+                                <input type="submit" value="登录" />
+                            </form>
                         </div>
                     </div>
                 </div>

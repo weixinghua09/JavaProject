@@ -4,12 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="PRODUCTTYPE")
 public class ProductType {
-	@Id
 	private int id;
 	private String name;
+	
+	@Id
+	@GenericGenerator(name="native", strategy = "native")
 	public int getId() {
 		return id;
 	}

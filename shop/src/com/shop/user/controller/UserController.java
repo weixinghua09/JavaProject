@@ -51,11 +51,19 @@ public class UserController {
 		return "online";
 	}
 	
+	@RequestMapping(value="/showperson",method=RequestMethod.GET)
+	public String showPerson(Model model, HttpSession session){
+		User user = (User)session.getAttribute("user");
+		User u = this.UserServiceImpl.findByUserName(user.getUserName());
+		session.setAttribute("user", u);
+		return "person";
+	}
+	
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
-	public String modify(String userName,Model model, HttpSession session){
+	public String modify(Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
 		session.setAttribute("user", user);
-		return "person";
+		return "editperson";
 	}
 	
 	@ResponseBody

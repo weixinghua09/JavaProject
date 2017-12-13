@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import="com.shop.product.service.CartItem"%> 
- <%@ page import="java.util.List" %>
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,10 +46,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a href="person.html"><i class="fa fa-user"></i> 个人中心</a></li>
                             <li><a href="order.html"><i class="fa fa-heart"></i> 订单</a></li>
                             <li><a href="cart.html"><i class="fa fa-user"></i> 购物车</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> 收货地址</a></li>
+                            <li><a href="<%=basePath%>address/myaddress"><i class="fa fa-user"></i> 收货地址</a></li>
                             <li><a href="regist.html"><i class="fa fa-user"></i> 注册</a></li>
                             <li><a href="login.html"><i class="fa fa-user"></i> 登录</a></li>
-                            <li><a href="admin.html"><i class="fa fa-user"></i> 后台管理</a></li>
+                            <li><a href="admin.html"><i class="fa fa-user"></i> ${admin.adminName }</a></li>
                         </ul>
                     </div>
                 </div>
@@ -94,9 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li><a href="index.html">首页</a></li>
                         <li><a href="shop.html">商店</a></li>
                         <li><a href="single-product.html">单品</a></li>
-                        <li class="active"><a href="cart.html">购物车</a></li>
-                        <li><a href="checkout.html">收货地址</a></li>
-                        <li><a href="#">类别</a></li>
+                        <li><a href="cart.html">购物车</a></li>
+                        <li class="active"><a href="checkout.html">更新商品</a></li>
+                        <li><a href="category.html">类别</a></li>
                         <li><a href="#">其他</a></li>
                     </ul>
                 </div>  
@@ -109,12 +106,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>购物车</h2>
+                        <h2>更新商品</h2>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End Page title area -->
+    </div>
     
     
     <div class="single-product-area">
@@ -124,17 +121,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-md-4">
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">搜索商品</h2>
-                        <form action="#">
-                            <input type="text" placeholder="请输入搜索关键字...">
+                        <form action="">
+                            <input type="text" placeholder="关键字">
                             <input type="submit" value="搜索">
                         </form>
                     </div>
                     
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">热搜单品</h2>
+                        <h2 class="sidebar-title">单品</h2>
                         <div class="thubmnail-recent">
-                            <img src="<%=basePath%>img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                            <h2><a href="single-product.html">索尼智能 TV - 2015</a></h2>
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html">索尼智能TV - 2015</a></h2>
+                            <div class="product-sidebar-price">
+                                <ins>$700.00</ins> <del>$800.00</del>
+                            </div>                             
+                        </div>
+                        <div class="thubmnail-recent">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html">索尼智能TV - 2015</a></h2>
+                            <div class="product-sidebar-price">
+                                <ins>$700.00</ins> <del>$800.00</del>
+                            </div>                             
+                        </div>
+                        <div class="thubmnail-recent">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html">索尼智能TV - 2015</a></h2>
+                            <div class="product-sidebar-price">
+                                <ins>$700.00</ins> <del>$800.00</del>
+                            </div>                             
+                        </div>
+                        <div class="thubmnail-recent">
+                            <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
+                            <h2><a href="single-product.html">索尼智能TV - 2015</a></h2>
                             <div class="product-sidebar-price">
                                 <ins>$700.00</ins> <del>$800.00</del>
                             </div>                             
@@ -142,11 +160,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     
                     <div class="single-sidebar">
-                        <h2 class="sidebar-title">最近浏览</h2>
+                        <h2 class="sidebar-title">商品上新</h2>
                         <ul>
-                            <li><a href="#">索尼智能 TV - 2015</a></li>
-                            <li><a href="#">索尼智能 TV - 2015</a></li>
-                            <li><a href="#">索尼智能 TV - 2015</a></li>
+                            <li><a href="single-product.html">索尼智能TV - 2015</a></li>
+                            <li><a href="single-product.html">索尼智能TV - 2015</a></li>
+                            <li><a href="single-product.html">索尼智能TV - 2015</a></li>
+                            <li><a href="single-product.html">索尼智能TV - 2015</a></li>
+                            <li><a href="single-product.html">索尼智能TV - 2015</a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,129 +174,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="POST" action="<%=basePath%>order/showOrder">
-                                <table cellspacing="0" class="shop_table cart">
-                                    <thead>
-                                        <tr>
-                                            <th class="product-remove">&nbsp;</th>
-                                            <th class="product-thumbnail">&nbsp;</th>
-                                            <th class="product-name">商品名</th>
-                                            <th class="product-price">价格</th>
-                                            <th class="product-quantity">数量</th>
-                                            <th class="product-subtotal">总价</th>
-                                        </tr>
-                                    </thead>
-                                    <c:forEach items="${itemlist }" var="i">
-                                    <tbody>
-                                        <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="#"><input type="checkbox" name="cb"/></a> 
-                                            </td>
+                            <form enctype="multipart/form-data" action="<%=basePath %>product/update" class="checkout" method="post" name="checkout">
 
-                                            <td class="product-thumbnail">
-                                                <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="<%=basePath %>img/product-thumb-2.jpg"></a>
-                                            </td>
+                                <div id="customer_details" class="col2-set">
+                                    <div class="col-1">
+                                        <div class="woocommerce-billing-fields">
+                                            <h3>商品更新</h3>
+                                            <p id="billing_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
+                                                <label for="billing_country">商品类型<abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                
+                                                <select class="country_to_state country_select" id="billing_country" name="typeId">
+                                                    <option value="">select a type..</option>
+                                                    <option value="1">Computer</option>
+                                                    <option value="2">pad</option>
+                                                    <option value="3">TV</option>
+                                                    <option value="4">phone</option>
+                                                </select>
+                                            </p>
+                                            <input type="hidden" name="id" value="${p.id }"/>
 
-                                            <td class="product-name">
-                                               <a href="single-product.html">${i.product.name }</a>
-                                            </td>
-
-                                            <td class="product-price">
-                                                <span class="amount">${i.product.discount }</span> 
-                                            </td>
-
-                                            <td class="product-quantity">
-                                                <div class="quantity buttons_added">
-                                                    <input type="button" class="minus" value="-">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="${i.count }" min="0" step="1">
-                                                    <input type="button" class="plus" value="+">
-                                                </div>
-                                            </td>
-                                            <td class="product-subtotal">
-                                                <span class="amount">${i.product.price }</span> 
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                        <tr>
-                                            <td class="actions" colspan="6">
-                                                <div class="coupon">
-                                                    <input type="submit" value="清空购物车" name="apply_coupon" class="button">
-                                                    <input type="submit" value="批量管理" name="apply_coupon" class="button">
-                                                </div>
-                                                <input type="submit" value="更新购物车" name="update_cart" class="button">
-                                                <input type="submit" value="结算" class="checkout-button button alt wc-forward">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                                <label class="" for="billing_first_name">商品名 <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="${p.name }" placeholder="" id="billing_first_name" name="name" class="input-text ">
+                                            </p>
+                                            <p id="billing_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
+                                                <label class="" for="billing_city">原价 <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="${p.price }" placeholder="Town / City" id="billing_city" name="price" class="input-text ">
+                                            </p>
+                                            <p id="billing_state_field" class="form-row form-row-first address-field validate-state" data-o_class="form-row form-row-first address-field validate-state">
+                                                <label class="" for="billing_state">折扣价</label>
+                                                <input type="text" id="billing_state" name="discount" placeholder="State / County" value="${p.discount }" class="input-text ">
+                                            </p>
+                                            <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
+                                                <label class="" for="billing_address_1">商品描述<abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="${p.description }" placeholder="Street address" id="billing_address_1" name="description" class="input-text ">
+                                            </p>
+                                            <p id="billing_postcode_field" class="form-row form-row-last address-field validate-required validate-postcode" data-o_class="form-row form-row-last address-field validate-required validate-postcode">
+                                                <label class="" for="billing_postcode">展示图 <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" value="" placeholder="Postcode / Zip" id="billing_postcode" name="postcode" class="input-text "><input type="submit" value="浏览" name="scan" class="checkout-button button alt wc-forward">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="更新" name="update" class="checkout-button button alt wc-forward">
                             </form>
-
-                            <div class="cart-collaterals">
-
-
-                            <div class="cross-sells">
-                                <h2>你可能感兴趣的...</h2>
-                                <ul class="products">
-                                    <li class="product">
-                                        <a href="single-product.html">
-                                            <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="<%=basePath%>img/product-2.jpg">
-                                            <h3>电脑</h3>
-                                            <span class="price"><span class="amount">£20.00</span></span>
-                                        </a>
-
-                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">查看详情</a>
-                                    </li>
-
-                                    <li class="product">
-                                        <a href="single-product.html">
-                                            <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="<%=basePath%>img/product-4.jpg">
-                                            <h3>硬盘</h3>
-                                            <span class="price"><span class="amount">£20.00</span></span>
-                                        </a>
-
-                                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">查看详情</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <div class="cart_totals ">
-                            <form action="<%=basePath%>order/generateOrder">
-                                <h2>购物车总计</h2>
-
-                                <table cellspacing="0">
-                                    <tbody>
-                                        <tr class="cart-subtotal">
-                                            <th>合计</th>
-                                            <td><span class="amount">£15.00</span></td>
-                                        </tr>
-
-                                        <tr class="shipping">
-                                            <th>运费</th>
-                                            <td>Free Shipping</td>
-                                        </tr>
-
-                                        <tr class="order-total">
-                                            <th>合计订单</th>
-                                            <td><strong><span class="amount">£15.00</span></strong> </td>
-                                        </tr>
-                                        <tr>
-                                        	<td></td>
-                                        	<td><input type="submit" value="结算" class="checkout-button button alt wc-forward"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </form>
-                            </div>
-                            </div>
-                        </div>                        
+                        </div>                       
                     </div>                    
                 </div>
             </div>
         </div>
     </div>
-
-
     <div class="footer-top-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -304,7 +256,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a href="#">收藏</a></li>
                             <li><a href="#">联系供应商</a></li>
                             <li><a href="#">首页</a></li>
-                        </ul>                       
+                        </ul>                        
                     </div>
                 </div>
                 
@@ -326,17 +278,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <h2 class="footer-wid-title">新用户</h2>
                         <p>成为我们的用户，丢掉繁琐的步骤，只需邮箱激活</p>
                         <div class="newsletter-form">
-                            <form action="#">
-                                <input type="email" placeholder="请输入邮箱地址">
-                                <input type="submit" value="注册">
-                            </form>
+                            <input type="email" placeholder="请输入邮箱地址">
+                            <input type="submit" value="注册">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End footer top area -->
-    
+    </div>
     <div class="footer-bottom-area">
         <div class="container">
             <div class="row">
@@ -356,7 +305,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
         </div>
-    </div> <!-- End footer bottom area -->
+    </div>
    
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>

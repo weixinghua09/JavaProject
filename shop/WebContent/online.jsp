@@ -27,13 +27,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="<%=basePath%>css/owl.carousel.css">
     <link rel="stylesheet" href="<%=basePath%>style.css">
     <link rel="stylesheet" href="<%=basePath%>css/responsive.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
    
@@ -43,13 +36,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="<%=basePath%>user/modify"><i class="fa fa-user"></i> 个人中心</a></li>
-                            <li><a href="order.html"><i class="fa fa-heart"></i> 订单</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> 购物车</a></li>
+                            <li><a href="<%=basePath%>user/showperson"><i class="fa fa-user"></i> 个人中心</a></li>
+                            <li><a href="<%=basePath%>order/myOrder?userId=${user.id}"><i class="fa fa-heart"></i> 订单</a></li>
+                            <li><a href="<%=basePath%>cart/showCart"><i class="fa fa-user"></i> 购物车</a></li>
                             <li><a href="<%=basePath%>address/myaddress"><i class="fa fa-user"></i> 收货地址</a></li>
                             <li><a href="<%=basePath%>regist.jsp"><i class="fa fa-user"></i> 注册</a></li>
                             <li><a href="<%=basePath%>login.jsp"><i class="fa fa-user"></i> ${user.userName }</a></li>
-                            <li><a href="admin.html"><i class="fa fa-user"></i> 后台管理</a></li>
+                            <li><a href="<%=basePath%>adminlogin.jsp"><i class="fa fa-user"></i> 后台管理</a></li>
                         </ul>
                     </div>
                 </div>
@@ -68,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">购物车 - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a href="cart.html">购物车 - <span class="cart-amunt">$0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                     </div>
                 </div>
             </div>
@@ -88,13 +81,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">首页</a></li>
+                        <li class="active"><a href="<%=basePath%>index.jsp">首页</a></li>
                         <li><a href="<%=basePath%>product/all">商店</a></li>
                         <li><a href="single-product.html">单品</a></li>
-                        <li><a href="cart.html">购物车</a></li>
-                        <li><a href="checkout.html">收货地址</a></li>
-                        <li><a href="#">类别</a></li>
-                        <li><a href="#">其他</a></li>
+                        <li><a href="<%=basePath%>cart.jsp">购物车</a></li>
+                        <li><a href="<%=basePath%>address/myaddress">收货地址</a></li>
                     </ul>
                 </div>  
             </div>

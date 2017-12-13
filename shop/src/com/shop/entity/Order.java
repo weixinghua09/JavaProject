@@ -15,7 +15,21 @@ public class Order {
 	private int id;
 	private int totalPrice;
 	private User user;
+	private String name;
+	private int stateId;
 	
+	public int getStateId() {
+		return stateId;
+	}
+	public void setStateId(int stateId) {
+		this.stateId = stateId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	@Id
 	@GenericGenerator(name="native", strategy = "native")
 	public int getId() {

@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="com.shop.product.service.CartItem"%> 
+ <%@ page import="java.util.List" %>
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -226,8 +229,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="latest-product">
                         <h2 class="section-title">订单详情</h2>
                         <div id="myform">
-                            <form action="loginServlet">
                                 <SPAN>姓名：${user.userName }</SPAN>
+                                <form method="POST" action="<%=basePath%>order/generateOrder">
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove"><a href="<%=basePath %>cart.jsp">取消订单</a></th>
+                                            <th class="product-name">商品名</th>
+                                            <th class="product-price">价格</th>
+                                            <th class="product-quantity">数量</th>
+                                            <th class="product-subtotal">总价</th>
+                                        </tr>
+                                    </thead>
+                                    <c:forEach items="${itemlist }" var="i">
+                                    <tbody>
+                                        <tr class="cart_item">
+                                            <td class="product-thumbnail">
+                                                <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="<%=basePath %>img/product-thumb-2.jpg"></a>
+                                            </td>
+
+                                            <td class="product-name">
+                                               <a href="single-product.html">${i.product.name }</a>
+                                            </td>
+
+                                            <td class="product-price">
+                                                <span class="amount">${i.product.discount }</span> 
+                                            </td>
+
+                                            <td class="product-quantity">
+                                                <div class="quantity buttons_added">
+                                                    <input type="button" class="minus" value="-">
+                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="${i.count }" min="0" step="1">
+                                                    <input type="button" class="plus" value="+">
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal">
+                                                <span class="amount">${i.product.price }</span> 
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                        <tr>
+                                            <td class="actions" colspan="6">
+                                                <div class="coupon">
+                                                    <input type="submit" value="清空购物车" name="apply_coupon" class="button">
+                                                    <input type="submit" value="批量管理" name="apply_coupon" class="button">
+                                                </div>
+                                                <input type="submit" value="更新购物车" name="update_cart" class="button">
+                                                <input type="submit" value="结算" class="checkout-button button alt wc-forward">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </form>
                         </div>
                     </div>

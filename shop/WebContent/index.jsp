@@ -27,26 +27,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="<%=basePath%>css/owl.carousel.css">
     <link rel="stylesheet" href="<%=basePath%>style.css">
     <link rel="stylesheet" href="<%=basePath%>css/responsive.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
-   
     <div class="header-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="person.html"><i class="fa fa-user"></i> 个人中心</a></li>
-                            <li><a href="order.html"><i class="fa fa-heart"></i> 订单</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> 购物车</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> 收货地址</a></li>
+                            <li><a href="regist.jsp "><i class="fa fa-user"></i> 个人中心</a></li>
+                            <li><a href="regist.jsp"><i class="fa fa-heart"></i> 订单</a></li>
+                            <li><a href="regist.jsp"><i class="fa fa-user"></i> 购物车</a></li>
+                            <li><a href="regist.jsp"><i class="fa fa-user"></i> 收货地址</a></li>
                             <li><a href="regist.jsp"><i class="fa fa-user"></i> 注册</a></li>
                             <li><a href="login.jsp"><i class="fa fa-user"></i> 登录</a></li>
                             <li><a href="adminlogin.jsp"><i class="fa fa-user"></i> 后台管理</a></li>
@@ -55,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
         </div>
-    </div> <!-- End header area -->
+    </div><!-- End header area -->
     
     <div class="site-branding-area">
         <div class="container">
@@ -65,10 +57,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <h1><a href="index.html">e<span>电子商店</span></a></h1>
                     </div>
                 </div>
-                
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">购物车 - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a href="cart.html">购物车 - <span class="cart-amunt">$0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                     </div>
                 </div>
             </div>
@@ -88,13 +79,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div> 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">首页</a></li>
-                        <li><a href="<%=basePath%>product/all">商店</a></li>
-                        <li><a href="single-product.html">单品</a></li>
-                        <li><a href="cart.html">购物车</a></li>
-                        <li><a href="checkout.html">收货地址</a></li>
-                        <li><a href="#">类别</a></li>
-                        <li><a href="#">其他</a></li>
+                        <li class="active"><a href="index.jsp">首页</a></li>
+                        <li><a href="regist.jsp">商店</a></li>
+                        <li><a href="regist.jsp">单品</a></li>
+                        <li><a href="regist.jsp">购物车</a></li>
+                        <li><a href="regist.jsp">收货地址</a></li>
+                        <li><a href="regist.jsp">类别</a></li>
+                        <li><a href="regist.jsp">其他</a></li>
                     </ul>
                 </div>  
             </div>
@@ -104,7 +95,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="slider-area">
         <div class="zigzag-bottom"></div>
         <div id="slide-list" class="carousel carousel-fade slide" data-ride="carousel">
-            
             <div class="slide-bulletz">
                 <div class="container">
                     <div class="row">
@@ -132,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <h2>We are awesome</h2>
                                                 <p>I could not help to cut these words together, and to regroup with photographs, immediately, a beautiful photographic prose shines in front of my eyes! I read it silently, and at that moment, my heart and vision were deeply intoxicated with enjoyment...</p>
                                                 <p>I could not help to cut these words together, and to regroup with photographs, immediately, a beautiful photographic prose shines in front of my eyes! I read it silently, and at that moment, my heart and vision were deeply intoxicated with enjoyment...</p>
-                                                <a href="" class="readmore">Learn more</a>
+                                                <a href="regist.jsp" class="readmore">Learn more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <div class="slide-content">
                                                 <h2>We are great</h2>
                                                 <p>If you can use your camera to find the universal meaning, then you're a photographer. No matter what type of camera you're using, whether you're shooting for art or enjoyment. As long as your heart is searching, you're a photographer. That's what photography means!</p>
-                                                <a href="" class="readmore">Learn more</a>
+                                                <a href="regist.jsp" class="readmore">Learn more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -173,7 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 <h2>We are superb</h2>
                                                 <p>The story behind the photograph, the thinking after the moment. It's the photographer's greatness, and it's the photographer's responsibility. ?</p>
                                                 <p> To find the photo in the universal significance, while the ordinary real meaning is to impress people that a sincere, that a good sigh; that a heartache, the hidden side of a resonance; that a sorrowful anger, a wordless moved.</p>
-                                                <a href="" class="readmore">Learn more</a>
+                                                <a href="regist.jsp" class="readmore">Learn more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +176,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         </div>        
     </div> <!-- End slider area -->
-    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
     <div class="promo-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -231,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="product-f-image">
                                     <img src="<%=basePath%>img/product-1.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                        <a href="regist.jsp" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
                                     </div>
                                 </div>
@@ -246,7 +235,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="product-f-image">
                                     <img src="<%=basePath%>img/product-2.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                        <a href="regist.jsp" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
                                     </div>
                                 </div>
@@ -260,7 +249,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="product-f-image">
                                     <img src="<%=basePath%>img/product-3.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                        <a href="regist.jsp" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
                                     </div>
                                 </div>
@@ -275,7 +264,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="product-f-image">
                                     <img src="<%=basePath%>img/product-4.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                        <a href="regist.jsp" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
                                     </div>
                                 </div>
@@ -290,7 +279,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="product-f-image">
                                     <img src="<%=basePath%>img/product-5.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                        <a href="regist.jsp" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
                                     </div>
                                 </div>
@@ -305,13 +294,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <div class="product-f-image">
                                     <img src="<%=basePath%>img/product-6.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
+                                        <a href="regist.jsp" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> 加入购物车</a>
                                         <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> 查看详情</a>
                                     </div>
                                 </div>
-                                
                                 <h2><a href="single-product.html">三星 gallaxy note 4</a></h2>
-
                                 <div class="product-carousel-price">
                                     <ins>￥400.00</ins>
                                 </div>                            
@@ -545,9 +532,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-newsletter">
                         <h2 class="footer-wid-title">新用户</h2>
-                        <p>成为我们的用户，丢掉繁琐的步骤，只需邮箱激活</p>
+                        <p>丢掉繁琐的步骤，成为我们的用户，只需邮箱激活</p>
                         <div class="newsletter-form">
-                            <form action="#">
+                            <form action="#"><!--邮箱激活验证-->
                                 <input type="email" placeholder="请输入邮箱地址">
                                 <input type="submit" value="注册">
                             </form>
@@ -563,7 +550,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; 2015 eElectronics. All Rights Reserved. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                        <p>&copy; 2015 eElectronics. All Rights Reserved. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="电子商店">电子商店</a> - Collect from <a href="http://www.cssmoban.com/" title="电子商店" target="_blank">电子商店</a></p>
                     </div>
                 </div>
                 

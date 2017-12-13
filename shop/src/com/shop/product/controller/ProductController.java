@@ -1,5 +1,6 @@
 package com.shop.product.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,6 +24,40 @@ public class ProductController {
 	
 	@Resource
 	private ProductServiceImpl ProductServiceImpl;
+	
+	@RequestMapping(value="/newproduct",method=RequestMethod.GET)
+	public String newProduct(Model model,HttpSession session){
+		List<Product> productlist=this.ProductServiceImpl.findByDate();
+		User user = (User)session.getAttribute("user");
+		session.setAttribute("productlist", productlist);
+		session.setAttribute("user", user);
+		return "shop";
+		
+	}
+	
+	@RequestMapping(value="/addType",method=RequestMethod.POST)
+	public String addType(@RequestParam("name") String name,Model model, HttpSession session){
+		Admin admin = (Admin)session.getAttribute("admin");
+		ProductType pt = new ProductType();
+		pt.setName(name);
+		this.ProductServiceImpl.addType(pt);
+		List<ProductType> categorylist = new ArrayList<ProductType>();
+		categorylist = this.ProductServiceImpl.findAllType();
+		session.setAttribute("categorylist",categorylist );
+		session.setAttribute("admin", admin);
+		return "admincategory";
+	}
+	
+	@RequestMapping(value="/deleteType",method=RequestMethod.GET)
+	public String deleteType(int id,Model model, HttpSession session){
+		Admin admin = (Admin)session.getAttribute("admin");
+		this.ProductServiceImpl.deleteType(id);
+		List<ProductType> categorylist = new ArrayList<ProductType>();
+		categorylist = this.ProductServiceImpl.findAllType();
+		session.setAttribute("categorylist",categorylist );
+		session.setAttribute("admin", admin);
+		return "admincategory";
+	}
 	
 	@RequestMapping(value="/name",method=RequestMethod.POST)
 	public String findByName(@RequestParam("name") String name,Model model, HttpSession session){
@@ -52,11 +87,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String updateById(@RequestParam("name") String name,
+	public String updateById(@RequestParam("id") int id,@RequestParam("name") String name,
 			@RequestParam("price") int price,@RequestParam("discount") int discount,
-			@RequestParam("description") String description,@RequestParam("typeId") int typeId,Integer id,Model model, HttpSession session){
+			@RequestParam("description") String description,@RequestParam("typeId") int typeId,Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
-		Product p = new Product();
+		Product p = new Product();	
+		p.setId(id);
 		p.setName(name);
 		p.setPrice(price);
 		p.setDiscount(discount);

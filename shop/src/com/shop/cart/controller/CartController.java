@@ -38,9 +38,13 @@ public class CartController {
 			CartItem ci = (CartItem) i.next();
 			itemlist.add(ci);
 		}
-		session.setAttribute("itemlist",itemlist);
 		session.setAttribute("user", user);
-		return "cart";
+		if(itemlist!=null){
+			session.setAttribute("itemlist",itemlist);
+			return "cart";
+		}else{
+			return "shop";
+		}
 	}
 	
 	@RequestMapping(value="/addCartiem", method=RequestMethod.GET)

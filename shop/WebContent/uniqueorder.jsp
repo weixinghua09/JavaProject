@@ -3,7 +3,8 @@
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
-%> 
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,9 +25,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<%=basePath%>/css/owl.carousel.css">
-    <link rel="stylesheet" href="<%=basePath%>/style.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/responsive.css">
+    <link rel="stylesheet" href="<%=basePath%>css/owl.carousel.css">
+    <link rel="stylesheet" href="<%=basePath%>style.css">
+    <link rel="stylesheet" href="<%=basePath%>css/responsive.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body>
    
@@ -41,8 +49,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li><a href="cart.html"><i class="fa fa-user"></i> 购物车</a></li>
                             <li><a href="checkout.html"><i class="fa fa-user"></i> 收货地址</a></li>
                             <li><a href="regist.html"><i class="fa fa-user"></i> 注册</a></li>
-                            <li><a href="login.html"><i class="fa fa-user"></i> 登录</a></li>
-                            <li><a href="admin.html"><i class="fa fa-user"></i> 后台管理</a></li>
+                            <li><a href="login.html"><i class="fa fa-user"></i>登录</a></li>
+                            <li><a href="admin.html"><i class="fa fa-user"></i>${user.userName }</a></li>
                         </ul>
                     </div>
                 </div>
@@ -84,37 +92,95 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li><a href="index.html">首页</a></li>
                         <li><a href="shop.html">商店</a></li>
                         <li><a href="single-product.html">单品</a></li>
-                        <li class="active"><a href="person.jsp">个人中心</a></li>
-                        <li><a href="checkout.html">收货地址</a></li>
-                        <li><a href="#">类别</a></li>
+                        <li><a href="cart.html">购物车</a></li>
+                        <li class="active"><a href="checkout.html">商品管理</a></li>
+                        <li><a href="category.html">类别</a></li>
                         <li><a href="#">其他</a></li>
                     </ul>
                 </div>  
             </div>
         </div>
-    </div> <!-- End mainmenu area -->    
-    <div class="maincontent-area">
-        <div class="zigzag-bottom"></div>
+    </div> <!-- End mainmenu area -->
+    
+    <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="latest-product">
-                        <h2 class="section-title">个人中心</h2>
-                        <div id="myform">
-                        	<span>欢迎您，</span><span>${user.userName }</span>
-                                <span><!--头像显示--></span>
-                                <SPAN>年龄：</SPAN><span>${user.age }</span>
-                                <SPAN>联系方式：</SPAN><span>${user.phone }</span>
-                            </div>
-                        <div id="myform">
-                            <a href="<%=basePath%>user/modify">完善资料</a>
-                        	<a href="<%=basePath%>user/address">管理地址</a>
-                        </div>
+                    <div class="product-bit-title text-center">
+                        <h2>商品管理</h2>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End main content area -->  
+    </div>
+    
+    
+    <div class="single-product-area">
+        <div class="container">
+            <div class="row">
+            		<div class="single-sidebar">
+                        <h2 class="sidebar-title">搜索商品</h2>
+                        <form action="<%=basePath %>order/id" method="post">
+                            <input type="text" name="id" placeholder="请输入订单编号">
+                            <input type="submit" value="搜索">
+                        </form>
+                    </div>                
+                <div class="col-md-8">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                        	<th class="product-remove">&nbsp;</th>
+                                            <th class="product-thumbnail">订单编号</th>
+                                            <th class="product-name">用户ID</th>
+                                            <th class="product-thumbnail">订单描述</th>
+                                            <th class="product-thumbnail">订单总价</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="cart_item">
+                                            <td class="product-remove">
+                                                <a title="Remove this item" class="remove" href="<%=basePath%>order/orderdetails?id=${order.id}">详情</a> 
+                                            </td>
+                                            
+                                            <td>${order.id }</td>
+                                            <td>${order.user.id }</td>
+                                            <td class="product-thumbnail">
+                                            	<a href="single-product.html">${order.name}</a>
+                                            </td>
+                                            <td>${order.totalPrice }</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">商品名</th>
+                                            <th class="product-name">数量</th>
+                                            <th class="product-thumbnail">合计</th>
+                                        </tr>
+                                    </thead>
+                                    <c:forEach items="${orderItemlist }" var="i">
+                                    <tbody>
+                                        <tr class="cart_item">
+                                            <td class="product-remove">
+                                                <a title="Remove this item" class="remove" href="<%=basePath%>product/prodetails?id=${i.proId}">${i.proName }</a> 
+                                            </td>
+                                            <td>${i.proCount }</td>
+                                            <td class="product-thumbnail">
+                                            	<a href="single-product.html">${i.smallPrice}</a>
+                                            </td>
+                                        </tr>
+                                       </tbody>
+                                    </c:forEach>
+                                </table>
+                        </div>          
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer-top-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
@@ -164,17 +230,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <h2 class="footer-wid-title">新用户</h2>
                         <p>成为我们的用户，丢掉繁琐的步骤，只需邮箱激活</p>
                         <div class="newsletter-form">
-                            <form action="#">
-                                <input type="email" placeholder="请输入邮箱地址">
-                                <input type="submit" value="注册">
-                            </form>
+                            <input type="email" placeholder="请输入邮箱地址">
+                            <input type="submit" value="注册">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- End footer top area -->
-    
+    </div>
     <div class="footer-bottom-area">
         <div class="container">
             <div class="row">
@@ -194,7 +257,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
         </div>
-    </div> <!-- End footer bottom area -->
+    </div>
    
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>

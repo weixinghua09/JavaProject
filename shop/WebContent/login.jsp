@@ -226,7 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="latest-product">
                         <h2 class="section-title">请填写信息</h2>
                         <div id="myform">
-                            <form action="<%=basePath%>user/login" method="post">
+                            <form action="<%=basePath %>user/login" method="post">
                                 <SPAN>姓名：</SPAN><input name="userName" type="text"/>
                                 <SPAN>密码：</SPAN><input name="password" type="password"/>
                                 <input type="submit" value="登录" />
