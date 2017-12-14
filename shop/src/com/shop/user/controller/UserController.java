@@ -23,7 +23,7 @@ public class UserController {
 	
 	@Resource
 	private UserServiceImpl UserServiceImpl;
-	
+	//通过用户名关键字查询用户
 	@RequestMapping(value="/userName", method=RequestMethod.POST)
 	public String users(@RequestParam("keyword") String keyword,Model model, HttpSession session){
 		Admin admin=(Admin)session.getAttribute("admin");
@@ -34,7 +34,7 @@ public class UserController {
 		return "adminuser";
 		
 	}
-	
+	//管理员按用户id删除用户
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public String deleteuser(Integer id,Model model, HttpSession session){
 		Admin admin=(Admin)session.getAttribute("admin");
@@ -46,14 +46,14 @@ public class UserController {
 		return "adminuser";
 		
 	}
-	
+	//用户管理地址
 	@RequestMapping(value="/address",method=RequestMethod.GET)
 	public String address(String userName,Model model,HttpSession session){
 		User user = (User)session.getAttribute("user");
 		session.setAttribute("user", user);
 		return "address";
 	}
-	
+	//更新个人资料
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String update(@RequestParam("age")int age,@RequestParam("phone")String phone,Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
@@ -61,7 +61,7 @@ public class UserController {
 		this.UserServiceImpl.updateInfo(userName,age,phone);
 		return "online";
 	}
-	
+	//展示个人中心
 	@RequestMapping(value="/showperson",method=RequestMethod.GET)
 	public String showPerson(Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
@@ -69,14 +69,14 @@ public class UserController {
 		session.setAttribute("user", u);
 		return "person";
 	}
-	
+	//修改个人资料
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
 	public String modify(Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
 		session.setAttribute("user", user);
 		return "editperson";
 	}
-	
+	//ajax验证用户名是否可用
 	@ResponseBody
 	@RequestMapping(value="/ajax", method=RequestMethod.POST)
 	public String check(String userName,Model model, HttpSession session){
@@ -87,7 +87,7 @@ public class UserController {
 			return "yes";
 		}
 	}
-	
+	//用户登录
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam("userName") String userName,
 			@RequestParam("password") String password,
@@ -101,7 +101,7 @@ public class UserController {
 			return "login";
 		}
 	}
-	
+	//用户注册
 	@RequestMapping(value="/regist", method=RequestMethod.GET)
 	public String regist(@RequestParam("userName") String userName,
 			@RequestParam("password") String password,@RequestParam("tpassword") String tpassword,

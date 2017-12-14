@@ -24,7 +24,7 @@ public class ProductController {
 	
 	@Resource
 	private ProductServiceImpl ProductServiceImpl;
-	
+	//热门商品
 	@RequestMapping(value="/hotproduct",method=RequestMethod.GET)
 	public String hotProduct(Model model,HttpSession session){
 		List<Product> productlist=this.ProductServiceImpl.findByHot();
@@ -34,7 +34,7 @@ public class ProductController {
 		return "shop";
 		
 	}
-	
+	//最新商品
 	@RequestMapping(value="/newproduct",method=RequestMethod.GET)
 	public String newProduct(Model model,HttpSession session){
 		List<Product> productlist=this.ProductServiceImpl.findByDate();
@@ -44,7 +44,7 @@ public class ProductController {
 		return "shop";
 		
 	}
-	
+	//添加商品类型
 	@RequestMapping(value="/addType",method=RequestMethod.POST)
 	public String addType(@RequestParam("name") String name,Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
@@ -57,7 +57,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "admincategory";
 	}
-	
+	//删除商品类型
 	@RequestMapping(value="/deleteType",method=RequestMethod.GET)
 	public String deleteType(int id,Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
@@ -68,7 +68,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "admincategory";
 	}
-	
+	//通过商品名关键字搜索商品
 	@RequestMapping(value="/name",method=RequestMethod.POST)
 	public String findByName(@RequestParam("name") String name,Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
@@ -77,7 +77,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "adminproduct";
 	}
-	
+	//管理员添加商品
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String addProduct(@RequestParam("name") String name,
 			@RequestParam("price") int price,@RequestParam("discount") int discount,
@@ -95,7 +95,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "adminproduct";
 	}
-	
+	//管理员更新商品
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updateById(@RequestParam("id") int id,@RequestParam("name") String name,
 			@RequestParam("price") int price,@RequestParam("discount") int discount,
@@ -114,7 +114,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "adminproduct";
 	}
-	
+	//管理员修改商品
 	@RequestMapping(value="/edit",method=RequestMethod.GET)
 	public String editById(Integer id,Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
@@ -123,7 +123,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "editproduct";
 	}
-	
+	//管理员删除商品
 	@RequestMapping(value="/delete",method=RequestMethod.GET)
 	public String deleteById(Integer id,Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
@@ -133,7 +133,7 @@ public class ProductController {
 		session.setAttribute("admin", admin);
 		return "adminproduct";
 	}
-
+	//按商品类型查询商品
 	@RequestMapping(value="/type",method=RequestMethod.GET)
 	public String findByType(@RequestParam("typeid") int typeid,Model model, HttpSession session){
 		List<Product> productlist=this.ProductServiceImpl.findByType(typeid);
@@ -144,7 +144,7 @@ public class ProductController {
 			return "没有库存";
 		}
 	}
-	
+	//查询所有商品
 	@RequestMapping(value="/all", method=RequestMethod.GET)
 	public String findAll(Model model, HttpSession session){
 		List<Product> productlist=this.ProductServiceImpl.findAll();

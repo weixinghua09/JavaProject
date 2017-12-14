@@ -25,14 +25,14 @@ public class CartController {
 
 	@Resource
 	private ProductServiceImpl ProductServiceImpl;
-
+	//购物车为空
 	@RequestMapping(value="/nullcart",method=RequestMethod.GET)
 	public String nullCart(Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
 		session.setAttribute("user", user);
 		return "nullcart";
 	}
-	
+	//展示购物车
 	@RequestMapping(value="/showCart", method=RequestMethod.GET)
 	public String showCart(Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
@@ -53,7 +53,7 @@ public class CartController {
 			return "shop";
 		}
 	}
-	
+	//加入购物车
 	@RequestMapping(value="/addCartiem", method=RequestMethod.GET)
 	public String addCartItem(@RequestParam("id") int id,Model model, HttpSession session){
 		Product p = this.ProductServiceImpl.findById(id);

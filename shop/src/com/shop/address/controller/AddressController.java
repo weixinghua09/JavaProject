@@ -20,7 +20,7 @@ public class AddressController {
 	
 	@Resource
 	private AddressServiceImpl AddressServiceImpl;
-	
+	//删除地址
 	@RequestMapping(value="/deleteaddress",method=RequestMethod.GET)
 	public String deleteAddress(@RequestParam("id") int id,Model model,HttpSession session){
 		this.AddressServiceImpl.deleteById(id);
@@ -31,7 +31,7 @@ public class AddressController {
 		session.setAttribute("user", user);
 		return "myaddress";
 	}
-	
+	//更新地址
 	@RequestMapping(value="/updateaddress",method=RequestMethod.POST)
 	public String updateaddress(@RequestParam("name") String name,
 			@RequestParam("country") String country,@RequestParam("province") String province,
@@ -53,7 +53,7 @@ public class AddressController {
 		session.setAttribute("user", user);
 		return "myaddress";
 	}
-	
+	//修改地址
 	@RequestMapping(value="/editaddress",method=RequestMethod.GET)
 	public String editAddress(@RequestParam("id") int id,Model model,HttpSession session){
 		Address address = this.AddressServiceImpl.findById(id);
@@ -62,7 +62,7 @@ public class AddressController {
 		session.setAttribute("address", address);
 		return "editaddress";
 	}
-	
+	//用户查看自己的地址
 	@RequestMapping(value="/myaddress",method=RequestMethod.GET)
 	public String myAddress(String name,Model model,HttpSession session){
 		User user = (User)session.getAttribute("user");
@@ -72,7 +72,7 @@ public class AddressController {
 		session.setAttribute("user", user);
 		return "myaddress";
 	}
-	
+	//保存地址
 	@RequestMapping(value="/saveaddress",method=RequestMethod.POST)
 	public String saveAddress(@RequestParam("name") String name,
 			@RequestParam("country") String country,@RequestParam("province") String province,

@@ -38,7 +38,7 @@ public class AdminController {
 	@Resource
 	private OrderServiceImpl OrderServiceImpl;
 	
-	
+	//管理员登录
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam("adminName") String adminName,
 			@RequestParam("aPassword") String aPassword,
@@ -52,7 +52,7 @@ public class AdminController {
 			return "adminlogin";
 		}
 	}
-	
+	//查询用户列表
 	@RequestMapping(value="/users", method=RequestMethod.GET)
 	public String users(Model model, HttpSession session){
 		Admin admin=(Admin)session.getAttribute("admin");
@@ -63,7 +63,7 @@ public class AdminController {
 		return "adminuser";
 		
 	}
-	
+	//查询商品列表
 	@RequestMapping(value="/products", method=RequestMethod.GET)
 	public String edituser(Model model, HttpSession session){
 		Admin admin=(Admin)session.getAttribute("admin");
@@ -74,6 +74,7 @@ public class AdminController {
 		return "adminproduct";
 		
 	}
+	//查询商品类型
 	@RequestMapping(value="/category", method=RequestMethod.GET)
 	public String adminCategory(Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
@@ -83,7 +84,7 @@ public class AdminController {
 		session.setAttribute("admin", admin);
 		return "admincategory";
 	}
-	
+	//查询订单列表
 	@RequestMapping(value="/orders", method=RequestMethod.GET)
 	public String adminOrders(Model model, HttpSession session){
 		Admin admin = (Admin)session.getAttribute("admin");
