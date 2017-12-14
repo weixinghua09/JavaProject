@@ -26,6 +26,13 @@ public class CartController {
 	@Resource
 	private ProductServiceImpl ProductServiceImpl;
 
+	@RequestMapping(value="/nullcart",method=RequestMethod.GET)
+	public String nullCart(Model model, HttpSession session){
+		User user = (User)session.getAttribute("user");
+		session.setAttribute("user", user);
+		return "nullcart";
+	}
+	
 	@RequestMapping(value="/showCart", method=RequestMethod.GET)
 	public String showCart(Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");

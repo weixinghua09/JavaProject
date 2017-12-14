@@ -122,8 +122,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="col-md-4">
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">搜索用户</h2>
-                        <form action="">
-                            <input type="text" placeholder="关键字">
+                        <form action="<%=basePath %>user/userName" method="post">
+                            <input type="text" name="keyword" placeholder="关键字">
                             <input type="submit" value="搜索">
                         </form>
                     </div>                

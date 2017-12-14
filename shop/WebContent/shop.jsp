@@ -128,6 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input class="add_to_cart_button" type="submit" value="搜索"/>
             </form>
              <a title="Remove this item" class="remove" href="<%=basePath%>product/newproduct">最新商品</a> 
+             <a title="Remove this item" class="remove" href="<%=basePath%>product/hotproduct">热门商品</a> 
             <br/>           		
             	<c:forEach items="${productlist }" var="p">
             		<div class="col-md-3 col-sm-6">

@@ -25,6 +25,16 @@ public class ProductController {
 	@Resource
 	private ProductServiceImpl ProductServiceImpl;
 	
+	@RequestMapping(value="/hotproduct",method=RequestMethod.GET)
+	public String hotProduct(Model model,HttpSession session){
+		List<Product> productlist=this.ProductServiceImpl.findByHot();
+		User user = (User)session.getAttribute("user");
+		session.setAttribute("productlist", productlist);
+		session.setAttribute("user", user);
+		return "shop";
+		
+	}
+	
 	@RequestMapping(value="/newproduct",method=RequestMethod.GET)
 	public String newProduct(Model model,HttpSession session){
 		List<Product> productlist=this.ProductServiceImpl.findByDate();

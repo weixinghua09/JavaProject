@@ -4,11 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name="ORDERITEM")
 public class OrderItem {
 
-	@Id
 	private int id;
 	private int orderId;
 	private int proId;
@@ -16,6 +17,8 @@ public class OrderItem {
 	private int proCount;
 	private int smallPrice;
 	
+	@Id
+	@GenericGenerator(name="native", strategy = "native")
 	public int getId() {
 		return id;
 	}

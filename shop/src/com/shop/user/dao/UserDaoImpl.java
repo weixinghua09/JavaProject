@@ -65,4 +65,11 @@ public class UserDaoImpl{
 		query.setParameter(0, id);
         query.executeUpdate();
 	}
+
+	public List<User> findByKeyword(String keyword) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from User where userName like ?");
+		query.setParameter(0,"%"+keyword+"%");
+		return query.list();
+	}
 }

@@ -66,4 +66,10 @@ public class UserServiceImpl {
 	public void deleteById(Integer id) {
 		this.UserDaoImpl.deleteById(id);
 	}
+
+	public List<User> findByKeyword(String keyword) {
+		List<User> userlist = new ArrayList<User>();
+		userlist = this.UserDaoImpl.findByKeyword(keyword);
+		return userlist;
+	}
 }

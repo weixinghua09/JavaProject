@@ -103,4 +103,11 @@ public class ProductDaoImpl {
 		Query query = session.createQuery("from Product order by date");
 		return query.list();
 	}
+
+	public List<Product> findByHot() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Product where hotproduct=?");
+		query.setParameter(0,1);
+		return query.list();
+	}
 }

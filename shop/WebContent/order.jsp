@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>eElectronics - HTML eCommerce Template</title>
+    <title>生成订单</title>
     
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
@@ -230,7 +230,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <h2 class="section-title">订单详情</h2>
                         <div id="myform">
                                 <SPAN>姓名：${user.userName }</SPAN>
-                                <form method="POST" action="<%=basePath%>order/generateOrder">
+                                <form method="POST" action="<%=basePath%>order/generateOrder?name=${i.product.name }">
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>

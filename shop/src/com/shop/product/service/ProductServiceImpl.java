@@ -85,4 +85,10 @@ public class ProductServiceImpl {
 		productlist = this.ProductDaoImpl.findByDate();
 		return productlist;
 	}
+
+	public List<Product> findByHot() {
+		List<Product> productlist = new ArrayList<Product>();
+		productlist = this.ProductDaoImpl.findByHot();
+		return productlist;
+	}
 }

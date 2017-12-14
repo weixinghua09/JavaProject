@@ -188,7 +188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
                                                     <input type="button" class="minus" value="-">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="${i.count }" min="0" step="1">
+                                                    <input type="number" size="4" class="input-text qty text" value="${i.count }" min="0" step="1">
                                                     <input type="button" class="plus" value="+">
                                                 </div>
                                             </td>
@@ -200,7 +200,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <tr>
                                             <td class="actions" colspan="6">
                                                 <div class="coupon">
-                                                    <input type="submit" value="清空购物车" name="apply_coupon" class="button">
+                                                    <a type="submit" href="<%=basePath %>cart/nullcart" class="button">清空购物车</a>
+                                                    <a type="submit" href="<%=basePath %>cart/deletecartitem" class="button">删除选中商品</a>
                                                     <input type="submit" value="批量管理" name="apply_coupon" class="button">
                                                 </div>
                                                 <input type="submit" value="更新购物车" name="update_cart" class="button">

@@ -54,7 +54,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/users", method=RequestMethod.GET)
-	public String users(String aPassword,Model model, HttpSession session){
+	public String users(Model model, HttpSession session){
 		Admin admin=(Admin)session.getAttribute("admin");
 		List<User> userlist = new ArrayList<User>();
 		userlist = this.UserServiceImpl.findAll();

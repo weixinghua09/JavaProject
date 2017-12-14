@@ -143,9 +143,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <tbody>
                                         <tr class="cart_item">
                                             <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="<%=basePath%>order/orderdetails?id=${i.id}">详情</a> 
+                                                <a title="Remove this item" class="remove" href="<%=basePath%>order/delete?id=${i.id}">删除</a>
+                                                <a title="Remove this item" class="remove" href="<%=basePath%>order/orderdetails?id=${i.id}">详情</a>                                        
                                             </td>
-                                            
                                             <td>${i.id }</td>
                                             <td>${i.user.id }</td>
                                             <td class="product-thumbnail">

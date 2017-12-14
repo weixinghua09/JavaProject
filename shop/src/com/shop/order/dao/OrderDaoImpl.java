@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.shop.entity.Order;
+import com.shop.entity.OrderItem;
 import com.shop.entity.User;
 
 @Repository
@@ -49,6 +50,25 @@ public class OrderDaoImpl {
 	public List<Order> findAllOrders() {
 		Query query=this.sessionFactory.getCurrentSession().createQuery("from "+Order.class.getSimpleName());
 		return query.list();
+	}
+
+	public Order findByOrder(Order order) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Order where (totalPrice=? and name=?) and stateId=?");
+		query.setParameter(0, order.getTotalPrice());
+		query.setParameter(1, order.getName());
+		query.setParameter(2, order.getStateId());
+		Order o = (Order)query.uniqueResult();
+		return o;
+	}
+
+	public void saveOrderDetails(List<OrderItem> orderitemlist) {
+		for (int i = 0; i < orderitemlist.size(); i++) {
+			OrderItem oi = orderitemlist.get(i);
+			sessionFactory.getCurrentSession().save(oi);
+		}
+		
+		
 	}
 
 }

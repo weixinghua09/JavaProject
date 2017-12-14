@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.shop.entity.Admin;
 import com.shop.entity.Order;
 import com.shop.entity.OrderItem;
+import com.shop.entity.Product;
+import com.shop.entity.ProductType;
 import com.shop.entity.User;
 import com.shop.order.service.OrderServiceImpl;
 import com.shop.product.service.CartItem;
@@ -27,14 +29,14 @@ public class OrderController {
 	private OrderServiceImpl OrderServiceImpl;
 	
 	@Resource
-	private ProductServiceImpl ProductSercviceImpl;
+	private ProductServiceImpl ProductServiceImpl;
 	
 	@RequestMapping(value="/orderdetails", method=RequestMethod.GET)
 	public String showOrderDetails(int id,Model model, HttpSession session){
 		User user = (User)session.getAttribute("user");
 		Admin admin = (Admin)session.getAttribute("admin");
 		Order o = this.OrderServiceImpl.findById(id);
-		List<OrderItem> orderItemlist = this.ProductSercviceImpl.findProList(id);
+		List<OrderItem> orderItemlist = this.ProductServiceImpl.findProList(id);
 		session.setAttribute("orderItemlist", orderItemlist);
 		session.setAttribute("order", o);
 		session.setAttribute("admin",admin);
@@ -87,21 +89,52 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/generateOrder", method=RequestMethod.POST)
-	public String generateOrder(Model model, HttpSession session){
+	public String generateOrder(String name,Model model, HttpSession session){
 		List<CartItem> itemlist = (List<CartItem>)session.getAttribute("itemlist");
 		User user = (User)session.getAttribute("user");
 		Order order = new Order();
 		order.setUser(user);
-		int totalPrice = 100;
+		int totalPrice = 0;
+		for (int i = 0; i < itemlist.size(); i++) {
+			CartItem ci= itemlist.get(i);
+			int price = ci.getProduct().getPrice();
+			int count = ci.getCount();
+			int smallPrice = price*count;
+			ci.setSmallPrice(smallPrice);
+			totalPrice = totalPrice+smallPrice;
+		}
 		order.setTotalPrice(totalPrice);
+		order.setName(name);
+		order.setStateId(0);
 		order.getUser().setId(user.getId());
 		if(order!=null){
 			this.OrderServiceImpl.saveOrder(order);
+//			this.OrderServiceImpl.saveOrderDetails(order,itemlist);
 		}
-		session.setAttribute("order", order);
+		Order o = this.OrderServiceImpl.findByOrder(order);
+		session.setAttribute("order", o);
 		session.setAttribute("itemlist", itemlist);
 		session.setAttribute("user", user);
 		
 		return "orderfinish";
+	}
+	
+	@RequestMapping(value="/saveorderitem",method=RequestMethod.GET)
+	public String saveOrderItem(Model model, HttpSession session){
+		List<Product> productlist=this.ProductServiceImpl.findAll();
+		List<ProductType> pts = this.ProductServiceImpl.findAllType();
+		User user = (User)session.getAttribute("user");
+		Order order = (Order)session.getAttribute("order");
+		List<CartItem> itemlist = (List<CartItem>)session.getAttribute("itemlist");
+		((Object) session).merge(order);
+		this.OrderServiceImpl.saveOrderDetails(order,itemlist);
+		if(productlist!=null){
+			session.setAttribute("productlist", productlist);
+			session.setAttribute("pts", pts);
+			session.setAttribute("user", user);
+			return "shop";
+		}else{
+			return "没有商品";
+		}
 	}
 }

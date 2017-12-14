@@ -24,6 +24,17 @@ public class UserController {
 	@Resource
 	private UserServiceImpl UserServiceImpl;
 	
+	@RequestMapping(value="/userName", method=RequestMethod.POST)
+	public String users(@RequestParam("keyword") String keyword,Model model, HttpSession session){
+		Admin admin=(Admin)session.getAttribute("admin");
+		List<User> userlist = new ArrayList<User>();
+		userlist = this.UserServiceImpl.findByKeyword(keyword);
+		session.setAttribute("userlist", userlist);
+		session.setAttribute("admin", admin);
+		return "adminuser";
+		
+	}
+	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
 	public String deleteuser(Integer id,Model model, HttpSession session){
 		Admin admin=(Admin)session.getAttribute("admin");
