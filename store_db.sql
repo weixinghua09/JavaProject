@@ -80,7 +80,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
   CONSTRAINT `orders_fk` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 #
 # Structure for the `product` table : 
@@ -150,21 +150,23 @@ INSERT INTO `orders` (`id`, `totalPrice`, `userId`, `name`, `stateId`) VALUES
   (6,100,3,NULL,0),
   (7,100,3,NULL,0),
   (8,38,3,NULL,0),
-  (9,83,3,'',0),
-  (10,50,3,'',0),
-  (11,59,3,'',0),
-  (12,2404,3,'',0),
-  (13,44,3,'',0),
-  (14,70,3,'',0),
-  (15,61,3,'',0),
-  (16,2391,3,'',0),
-  (17,42,3,'',0),
-  (18,2376,3,'',0),
-  (19,106,3,'',0),
-  (20,2373,3,'',0),
-  (21,47,3,'',0),
-  (22,2372,3,'',0),
-  (23,2402,3,'',0);
+  (9,83,3,'iPhone',0),
+  (10,50,3,'iPhone',0),
+  (11,59,3,'iPhone',0),
+  (12,2404,3,'iPhone',0),
+  (13,44,3,'iPhone',0),
+  (14,70,3,'iPhone',0),
+  (15,61,3,'iPhone',0),
+  (16,2391,3,'iPhone',0),
+  (17,42,3,'iPhone',0),
+  (18,2376,3,'iPhone',0),
+  (19,106,3,'MI TV',0),
+  (20,2373,3,'MI TV',0),
+  (21,47,3,'MI TV',0),
+  (22,2372,3,'MI TV',0),
+  (23,2402,3,'MI TV',0),
+  (24,2358,3,'MI TV',0),
+  (25,2358,3,'MI TV',0);
 COMMIT;
 
 #
